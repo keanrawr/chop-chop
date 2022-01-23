@@ -1,3 +1,5 @@
+![deploy](https://github.com/keanrawr/chop-chop/workflows/Deploy%20Website/badge.svg)
+
 # Chop Chop
 
 ![Chop Chop](img/logo.png "Chop Chop")
