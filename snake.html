@@ -115,6 +115,13 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
       <script src="js/games/snake/sketch.js"></script>
       <script src="js/games/snake/snake.js"></script>
+      <script>
+        window.addEventListener("keydown", function(e) {
+          if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+          }
+        }, false);
+      </script>
       <main>
       </main>
     </div>
@@ -127,7 +134,7 @@
       <li>La viborita puede "chocar" consigo misma si regresa</li>
       <li>La comida puede salir en el cuerpo de la viborita</li>
       <li>No hay botón de reiniciar</li>
-      <li>Las flechitas mueven toda la página</li>
+      <li><s>Las flechitas mueven toda la página</s></li>
     </ol>
   </div>
   <!-- End of game area -->
