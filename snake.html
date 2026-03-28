@@ -9,10 +9,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- <link rel="manifest" href="site.webmanifest"> -->
-  <!-- Place favicon.ico in the root directory -->
-
-  <!-- CSS here -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
@@ -25,15 +21,9 @@
   <link rel="stylesheet" href="css/slicknav.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/games.css">
-  <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
 <body>
-  <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-  <!-- header-start -->
   <header>
     <div class="header-area ">
       <div id="sticky-header" class="main-header-area">
@@ -47,7 +37,7 @@
               </div>
             </div>
             <div class="col-xl-6 col-lg-7">
-              <div class="main-menu  d-none d-lg-block">
+              <div class="main-menu d-none d-lg-block">
                 <nav>
                   <ul id="navigation">
                     <li><a class="active" href="index.html">home</a></li>
@@ -73,14 +63,11 @@
               <div class="mobile_menu d-block d-lg-none"></div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </header>
-  <!-- header-end -->
 
-  <!-- bradcam_area  -->
   <div class="bradcam_area bradcam_bg_1">
     <div class="container">
       <div class="row">
@@ -92,54 +79,78 @@
       </div>
     </div>
   </div>
-  <!-- /bradcam_area  -->
 
-  <!-- Start Sample Area -->
-  <section class="sample-text-area">
+  <section class="sample-text-area game-page">
     <div class="container box_1170">
-      <h3 class="text-heading">Juego de la viborita</h3>
-      <p class="sample-text">
-        En el juego de Chop Chop tu eres la viborita y tienes que comer para crecer, como Popeye.
-      </p>
-      <p>
-        Haz click en el campo de juego y muévete con las flechas del teclado.
-      </p>
+      <div class="game-intro">
+        <h3 class="text-heading">Juego de la viborita</h3>
+        <p class="sample-text">
+          La viborita ya quedó completa: ahora sí crece sólo cuando come, no puede darse la vuelta para atravesarse,
+          la comida nunca aparece encima de su cuerpo y la velocidad sube conforme avanzas.
+        </p>
+        <p>Muévete con las flechas y reinicia con <strong>R</strong> o el botón.</p>
+      </div>
+
+      <div class="game-shell">
+        <div class="game-shell__top">
+          <div class="game-shell__title">
+            <h3>Viborita turbo</h3>
+            <p>Cada 3 comidas el ritmo sube un poco.</p>
+          </div>
+          <div class="game-hud">
+            <div class="game-stat">
+              <span class="game-stat__label">Puntos</span>
+              <span class="game-stat__value" id="snake-score">0</span>
+            </div>
+            <div class="game-stat">
+              <span class="game-stat__label">Velocidad</span>
+              <span class="game-stat__value" id="snake-speed">0 fps</span>
+            </div>
+            <div class="game-stat">
+              <span class="game-stat__label">Estado</span>
+              <span class="game-stat__value" id="snake-state">Jugando</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-stage">
+          <div class="game-canvas-frame">
+            <canvas id="snake-game" width="750" height="500"></canvas>
+          </div>
+          <div class="game-actions">
+            <div class="game-help">
+              <span>Flechas para moverte</span>
+              <span>R para reiniciar</span>
+              <span>No atravieses tu cuerpo</span>
+            </div>
+            <button class="game-button" id="snake-reset" type="button">Reiniciar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row game-notes">
+        <div class="col-md-4">
+          <div class="single_service text-center">
+            <h3>Choque real</h3>
+            <p>Los reversazos ya no cuentan: si intentas ir al lado opuesto, la viborita mantiene su dirección.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="single_service text-center">
+            <h3>Comida limpia</h3>
+            <p>La fruta se recoloca sólo en casillas libres para que nunca salga dentro del cuerpo.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="single_service text-center">
+            <h3>Reset rápido</h3>
+            <p>No hace falta recargar la página. Botón o tecla y arrancas una partida nueva.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- End Sample Area -->
 
-  <!-- Start of game area -->
-  <div class="container">
-    <div class="game-canvas">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
-      <script src="js/games/snake/sketch.js"></script>
-      <script src="js/games/snake/snake.js"></script>
-      <script>
-        window.addEventListener("keydown", function(e) {
-          if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
-            e.preventDefault();
-          }
-        }, false);
-      </script>
-      <main>
-      </main>
-    </div>
-    <div style="margin-bottom: 5rem;"></div>
-  </div>
-  <div class="container" style="margin-bottom: 5rem;">
-    <h2>Problemitas a resolver</h2>
-    <ol>
-      <li>La viborita siempre crece al final</li>
-      <li>La viborita puede "chocar" consigo misma si regresa</li>
-      <li>La comida puede salir en el cuerpo de la viborita</li>
-      <li>No hay botón de reiniciar</li>
-      <li><s>Las flechitas mueven toda la página</s></li>
-    </ol>
-  </div>
-  <!-- End of game area -->
-
-  <!-- footer start -->
   <footer class="footer">
     <div class="footer_top">
       <div class="container">
@@ -157,21 +168,9 @@
               </p>
               <div class="socail_links">
                 <ul>
-                  <li>
-                    <a href="#">
-                      <i class="ti-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="ti-twitter-alt"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-instagram"></i>
-                    </a>
-                  </li>
+                  <li><a href="#"><i class="ti-facebook"></i></a></li>
+                  <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -185,21 +184,17 @@
         <div class="row">
           <div class="col-xl-12">
             <p class="copy_right text-center">
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
               <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
               with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
                 target="_blank">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
         </div>
       </div>
     </div>
   </footer>
-  <!--/ footer end  -->
 
-  <!-- JS here -->
   <script src="js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="js/vendor/jquery-1.12.4.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -218,30 +213,14 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/gijgo.min.js"></script>
-
-  <!--contact js-->
   <script src="js/contact.js"></script>
   <script src="js/jquery.ajaxchimp.min.js"></script>
   <script src="js/jquery.form.js"></script>
   <script src="js/jquery.validate.min.js"></script>
   <script src="js/mail-script.js"></script>
-
   <script src="js/main.js"></script>
-  <script>
-    $('#datepicker').datepicker({
-      iconsLibrary: 'fontawesome',
-      icons: {
-        rightIcon: '<span class="fa fa-caret-down"></span>'
-      }
-    });
-    $('#datepicker2').datepicker({
-      iconsLibrary: 'fontawesome',
-      icons: {
-        rightIcon: '<span class="fa fa-caret-down"></span>'
-      }
-
-    });
-  </script>
+  <script src="js/games/snake/snake.js"></script>
+  <script src="js/games/snake/sketch.js"></script>
 </body>
 
 </html>

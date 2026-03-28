@@ -1,69 +1,63 @@
 class Snake {
-
-  constructor() {
-    this.len = 1;
-    this.body = [];
-    this.body[0] = createVector(0, 0);
-    this.xdir = 0;
-    this.ydir = 0;
-    
+  constructor(startX, startY) {
+    this.segments = [
+      { x: startX - 2, y: startY },
+      { x: startX - 1, y: startY },
+      { x: startX, y: startY }
+    ];
+    this.direction = { x: 1, y: 0 };
   }
 
-  setDir(x, y) {
-    this.xdir = x;
-    this.ydir = y;
+  get head() {
+    return this.segments[this.segments.length - 1];
   }
 
-  update() {
-    let head = this.body[this.body.length - 1].copy();
-    this.body.shift();
-    head.x += this.xdir;
-    head.y += this.ydir;
-    this.body.push(head);
+  setDirection(nextDirection) {
+    const isReverse =
+      this.segments.length > 1 &&
+      this.direction.x === -nextDirection.x &&
+      this.direction.y === -nextDirection.y;
+
+    if (!isReverse) {
+      this.direction = nextDirection;
+    }
   }
 
-  grow() {
-    let head = this.body[this.body.length - 1].copy();
-    this.len++;
-    this.body.push(head);
+  getNextHead() {
+    return {
+      x: this.head.x + this.direction.x,
+      y: this.head.y + this.direction.y
+    };
   }
 
-  endGame() {
-    let x = this.body[this.body.length - 1].x;
-    let y = this.body[this.body.length - 1].y;
+  move(shouldGrow) {
+    const nextHead = this.getNextHead();
+    this.segments.push(nextHead);
 
-    if (x > w - 1 || x < 0 || y > h - 1 || y < 0) {
-      return true;
+    if (shouldGrow) {
+      return nextHead;
     }
 
-    for (let i = 0; i < this.body.length - 1; i++) {
-      let part = this.body[i];
-      if (part.x == x && part.y == y) {
+    this.segments.shift();
+    return nextHead;
+  }
+
+  occupiesCell(x, y) {
+    return this.segments.some((segment) => segment.x === x && segment.y === y);
+  }
+
+  hitsWall(cols, rows) {
+    return this.head.x < 0 || this.head.x >= cols || this.head.y < 0 || this.head.y >= rows;
+  }
+
+  hitsSelf() {
+    for (let index = 0; index < this.segments.length - 1; index += 1) {
+      const segment = this.segments[index];
+      if (segment.x === this.head.x && segment.y === this.head.y) {
         return true;
       }
     }
 
     return false;
   }
-  
-  eat(pos) {
-    let x = this.body[this.body.length - 1].x;
-    let y = this.body[this.body.length - 1].y;
-
-    if (x == pos.x && y == pos.y) {
-      this.grow();
-      return true
-    }
-    return false
-  }
-
-  show() {
-    for (let i = 0; i < this.body.length; i++) {
-      noStroke();
-
-      fill(0);
-      rect(this.body[i].x, this.body[i].y, 1, 1);
-    }
-  }
-
 }
